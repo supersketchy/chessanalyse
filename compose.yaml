@@ -90,7 +90,6 @@ services:
   worker:
     <<: *default-app
     command: pixi run -e prod celery -A config worker -l "${CELERY_LOG_LEVEL:-info}"
-    entrypoint: []
     deploy:
       resources:
         limits:
