@@ -27,8 +27,7 @@ ENV NODE_ENV="${NODE_ENV}" \
 
 COPY --chown=node:node . ..
 
-RUN if [ "${NODE_ENV}" != "development" ]; then \
-  ../run pnpm build:js && ../run pnpm build:css; else mkdir -p /app/public; fi
+RUN if [ "${NODE_ENV}" != "development" ]; then ../run pnpm build:js && ../run pnpm build:css; else mkdir -p /app/public; fi
 
 CMD ["bash"]
 
