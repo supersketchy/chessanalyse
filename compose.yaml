@@ -20,7 +20,7 @@ x-app: &default-app
   stop_grace_period: "3s"
   tty: true
   volumes:
-    - "${DOCKER_WEB_VOLUME:-.:/app/}"
+    - "${DOCKER_WEB_VOLUME:-./public_collected:/app/public_collected}"
 
 x-assets: &default-assets
   build:
@@ -90,6 +90,7 @@ services:
   worker:
     <<: *default-app
     command: pixi run -e prod celery -A config worker -l "${CELERY_LOG_LEVEL:-info}"
+    
     deploy:
       resources:
         limits:
