@@ -27,7 +27,7 @@ ENV NODE_ENV="${NODE_ENV}" \
 
 COPY --chown=node:node . ..
 
-RUN ../run pnpm build:js && ../run pnpm build:css
+RUN echo ${NODE_ENV} && ../run pnpm:build:js && ../run pnpm:build:css
 
 CMD ["bash"]
 
